@@ -87,8 +87,8 @@
 			$sql = new Sql();
 
 			$results = $sql->select("SELECT * FROM tb_users a INNER JOIN tb_persons b USING(idperson) WHERE a.iduser = :iduser", array(
-					":iduser" => $iduser
-			));
+			":iduser"=>$iduser
+		));
 
 			$this->setData($results[0]);
 		}
@@ -110,14 +110,14 @@
 			$this->setData($results[0]);
 		}
 
-		public function delete(){
-
+		public function delete() {
 			$sql = new Sql();
 
 			$sql->query("CALL sp_users_delete(:iduser)", array(
-				"iduser" => $this->getiduser()
+				":iduser" => $this->getiduser()
 			));
 		}
+
 
 		public static function getForgot($email){
 
