@@ -313,6 +313,21 @@ $app->post('/admin/categories/:idcategory', function($idcategory) {
 
 });
 
+$app->get('/category/:idcategory', function($iduser) {
+
+    $category = new Category();
+
+    $category->get((int)$iduser);
+
+    $page = new Page();
+
+    $page->setTpl("category", [
+        'category' => $category->getValues(),
+        'products' => []
+    ]);
+
+});
+
 $app->run();
 
 ?>
